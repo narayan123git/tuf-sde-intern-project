@@ -1,35 +1,78 @@
-# Lumina Workspace Calendar 📅✨
+# 🌌 Lumina Workspace Calendar
 
-A beautifully interactive and highly customizable wall-styled calendar built with React, Vite, and Tailwind CSS. The application is designed to act as a seamless workspace tool, featuring single-day journaling, multi-day range notes, local data persistence, and a highly polished UI.
+Welcome to the **Lumina Workspace Calendar** – a beautifully crafted, highly interactive, wall-styled calendar built for modern workspaces. Designed to function as both a seamless productivity tool and a visually stunning aesthetic experience, this calendar natively blends single-day journaling, multi-day range planning, and dynamic thematic UI into one frictionless application.
 
-## Features 🚀
-- **Single & Range Mode Selection:** Switch between "SINGLE" and "RANGE" notes dynamically. Use single mode to drop notes on particular days, or switch to Range mode and hold `Shift + Click` to bracket multiple cross-month days for trips or prolonged projects.
-- **Note Span Adjustments:** Edit range boundaries effortlessly! In Range Mode, click the edit button on an active note and simply re-click the calendar dates to reshape the span without losing your text.
-- **Hover Visualizations:** See precisely where notes are located by hovering over them in the Notes Panel to trace their exact date bounds on the calendar.
-- **Dynamic Ethereal UI:** Watch the calendar shift themes automatically using deep background gradients styled specifically for each unique month. Includes subtle ambient orbs!
-- **Interactive Details Modal:** A smooth, flip-animated modal that opens details down to the day level, including highlighted tags if the day is an official Holiday.
-- **Built-in Guide System:** A custom tutorial guide explains the calendar's inner workings right out of the box.
+## 📖 Comprehensive Overview
 
-## How to Use 💡
-1. **Navigating the Calendar:** Scroll through years and months instantly utilizing the native dropdowns hidden within the bottom-left header modal. Switch to 'YEAR' mode directly at the calendar's top peak.
-2. **Adding A Note:** Click any particular day to throw down notes. If in "RANGE" mode, click and drag using Shift-Click! 
-3. **Updating Holiday/Range Data:** If your note involves a holiday, you'll see a red badge tagging that day!
-4. **Data Persistence:** Close the tab? Walk away? Not a problem, notes are automatically persisted natively to the browser's `localStorage`.
-
-## Tech Stack 🛠️
-- **Frontend:** React 19, JavaScript.
-- **Styling:** Tailwind CSS v4, custom keyframe flip animations.
-- **Build Tool:** Vite for instantaneous Hot Module Replacements.
-- **Animation:** \`framer-motion\` applied to modal and panel transitions.
-
-## Quick Start 🚀
-\`\`\`bash
-# Install dependencies
-npm install
-
-# Start the dev server
-npm run dev
-\`\`\`
+Lumina is not just a standard calendar; it's a dynamic workspace designed to handle complex note-taking seamlessly. By leveraging the power of React and Framer Motion, it offers a 3D-flipping, glassmorphism-inspired UI with ambient lighting and seasonal themes. 
+Whether you are jotting down a quick reminder for tomorrow, or mapping out a 3-week continuous block for a development sprint, Lumina intuitively adapts perfectly to your workflow.
 
 ---
-*Created carefully with the developer experience in mind.* 🌌
+
+## ✨ Core Features inside Lumina
+
+### 1. Dual-Mode Selection System 🎯
+- **Single Mode:** Simply click on any day to open a flipped-in detailed view. Here you can write specific personal notes. If the day lands on a registered holiday, you will see a prominent red badge detailing the occasion right below the date!
+- **Range Mode:** Toggle the "RANGE" button at the bottom (or hold `Shift + Click`) to drag and highlight a continuous block of cross-month dates. Perfect for planning vacations, sprints, or multi-day events.
+
+### 2. Intelligent Notes Panel & Hover Mapping 📝
+- When in Range Mode, a dedicated **Notes Panel** appears dynamically on the right side, showing a timeline of all the active notes currently spanning your month.
+- **Hover Visualizations:** Hover your mouse over any saved note in the side panel, and watch the calendar instantly transition to display the exact physical bounds of that specific note!
+- **Frictionless Reshaping:** Need to change the dates of a specific note? Click the "Edit" (pencil) icon on that note in the sidebar, and simply re-draw the dates forward or backward directly on the actual calendar layout. Your note text is preserved while its physical boundaries shift flawlessly.
+
+### 3. Dynamic Seasonality & Ethereal Themes 🌸❄️
+- As you navigate between from month to month, the calendar's backdrop, UI gradients, transparent overlays, and beautiful header images shift automatically. From frosty blues in January to warm autumn glows in October, Lumina keeps your workspace fresh.
+- Included subtle "ambient orbs" rotate in the dark background for a modern, glassmorphic floating depth effect.
+
+### 4. Interactive Details & Zoomable "Year" View 📅
+- Utilize the clear `YEAR | MONTH` toggle located at the top navigation bar. Switch into "YEAR" view to zoom out and see all 12 months at a macroscopic level, then click any month to smoothly dive back in.
+- Need to jump decades? Use the fast, hidden selector dropdowns hovering inside the aesthetic header image to warp backward or forward instantly.
+
+### 5. Persistent Local Storage 💾
+- Close the browser? Accidentally refresh? Power down your PC? No worries. All of your day notes and multi-day ranges are completely persistent, utilizing your browser's local `localStorage`. Your configurations and data will be exactly where you left them.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Frontend Framework:** React 19
+- **Build Engine & Compilation:** Vite (Instantaneous Hot Module Replacement)
+- **Styling Architecture:** Tailwind CSS v4 (Handling all highly complex utility coloring, backdrop-filtering, and responsive fluid styling)
+- **Animation Framework:** Framer Motion (Orchestrating the fluid 3D UI flips, modal presence popups, and sliding panel animations)
+- **Data Handling:** Vanilla JavaScript and embedded `localStorage`
+
+---
+
+## 🚀 Getting Started
+
+Want to run Lumina Workspace Calendar on your local machine? Follow these simple steps:
+
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed along with `npm`.
+
+### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/narayan123git/tuf-sde-intern-project.git
+   ```
+2. **Navigate into the directory:**
+   ```bash
+   cd interactive-calendar
+   ```
+3. **Install the dependencies:**
+   ```bash
+   npm install
+   ```
+4. **Spin up the development server:**
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and head to the local URL (usually `http://localhost:5173`) to experience Lumina.
+
+---
+
+## 📚 Built-In Application Guide 
+If you ever get lost, simply click the **"ℹ️ GUIDE"** button located cleanly at the very top of the calendar interface during runtime. It launches an internal modal containing rich instructions detailing exactly how to use shift-clicks, execute single clicks, edit note bounds, and fluidly navigate the system.
+
+---
+*Crafted carefully for productivity, style, and extreme interactivity.* ✨
