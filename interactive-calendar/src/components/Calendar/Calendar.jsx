@@ -79,7 +79,7 @@ const DayDetailsModal = ({ dayDetails, notesData, setNotesData, onClose, current
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
     >
       <div className="w-full max-w-lg bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
       <div className="flex items-center justify-between p-6 border-b border-white/10 bg-slate-800/60">
@@ -230,28 +230,32 @@ const Calendar = () => {
   }, [endDate, startDate]);
 
   return (
-    <div className="min-h-screen wall-bg flex items-center justify-center p-4 sm:p-10 lg:p-14 overflow-hidden transition-colors duration-700" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
+    <div className="min-h-screen wall-bg flex flex-col items-center justify-center p-4 sm:p-10 lg:p-14 overflow-hidden transition-colors duration-700" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="ambient-orb ambient-orb-left" />
         <div className="ambient-orb ambient-orb-right" />
       </div>
 
-      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex bg-gray-900/60 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-lg">
-        {['year', 'month'].map(mode => (
-          <button key={mode} onClick={() => setViewMode(mode)} className={`px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${viewMode === mode ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'}`}>
-            {mode}
-          </button>
-        ))}
-        <button onClick={() => setShowGuide(true)} className="px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 text-blue-400 hover:text-white hover:bg-blue-500/20">
-          GUIDE
-        </button>
-      </div>
+
 
       <AnimatePresence>
         {showGuide && <GuideModal onClose={() => setShowGuide(false)} />}
       </AnimatePresence>
 
-      <div className="relative w-full max-w-5xl calendar-shell rounded-2xl overflow-hidden shadow-[0_30px_120px_-20px_rgba(2,6,23,0.85)] mt-10 mb-2 mx-auto border border-slate-700/40">
+            <div className="z-[100] flex items-center justify-between w-full max-w-5xl mb-6 mt-8">
+        <div className="flex bg-slate-900/60 backdrop-blur-md p-1 rounded-full border border-slate-700/60 shadow-xl">
+          {['year', 'month'].map(mode => (
+            <button key={mode} onClick={() => setViewMode(mode)} className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${viewMode === mode ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'}`}>
+              {mode}
+            </button>
+          ))}
+        </div>
+        <button onClick={() => setShowGuide(true)} className="flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-colors duration-300 bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500 hover:text-white shadow-lg hover:shadow-blue-500/25">
+          <span className="text-xl">ℹ️</span> Guide
+        </button>
+      </div>
+
+      <div className="relative w-full max-w-5xl calendar-shell rounded-2xl overflow-hidden shadow-[0_30px_120px_-20px_rgba(2,6,23,0.85)] border border-slate-700/40">
         <div className="absolute -top-28 left-0 right-0 flex justify-between px-12 sm:px-24 z-40 pointer-events-none">
           <div className="flex flex-col items-center"><div className="hanger-pin" /><div className="hanger-line" /><div className="hanger-knot" /></div>
           <div className="flex flex-col items-center"><div className="hanger-pin" /><div className="hanger-line" /><div className="hanger-knot" /></div>
