@@ -112,6 +112,7 @@ export function useDateRange({ calendarDays = [], isAnimating = false } = {}) {
 
   return {
     range,
+    setRange,
     startDate,
     endDate,
     hoverDate,

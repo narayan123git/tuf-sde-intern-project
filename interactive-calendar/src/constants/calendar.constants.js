@@ -1,9 +1,14 @@
 export const WEEKDAY_LABELS = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
 export const STATIC_HOLIDAYS = {
+  '1-1': 'New Year',
   '1-26': 'Republic Day',
+  '4-8': 'Ramadan / Eid al-Fitr',
+  '4-13': 'Baisakhi',
+  '4-14': 'Ambedkar Jayanti',
   '8-15': 'Independence Day',
   '10-2': 'Gandhi Jayanti',
+  '10-31': 'Halloween',
   '12-25': 'Christmas',
 };
 
@@ -14,44 +19,28 @@ export const CALENDAR_LAYOUT = {
   monthTransitionResetMs: 650,
 };
 
+const defaultColors = {
+  bg: 'bg-slate-900',
+  overlay: 'bg-gray-900/80',
+  text: 'text-gray-200',
+  highlightBg: 'bg-blue-900/30',
+  highlightText: 'text-blue-200',
+  selectedBg: 'ring-2 ring-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)] bg-blue-900/50 backdrop-blur-md',
+  holidayDot: 'bg-blue-400',
+  todayRing: 'ring-2 ring-blue-400 ring-offset-2 ring-offset-slate-900',
+};
+
 export const CALENDAR_THEMES = [
-  {
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1400&q=80',
-    colors: {
-      bg: 'bg-indigo-700',
-      overlay: 'bg-indigo-900/75',
-      text: 'text-indigo-300',
-      highlightBg: 'bg-indigo-400/18',
-      highlightText: 'text-indigo-100',
-      selectedBg: 'bg-gradient-to-br from-indigo-500 to-violet-600',
-      holidayDot: 'bg-indigo-300',
-      todayRing: 'ring-2 ring-indigo-300 ring-offset-2 ring-offset-slate-900',
-    },
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
-    colors: {
-      bg: 'bg-violet-700',
-      overlay: 'bg-violet-900/75',
-      text: 'text-violet-300',
-      highlightBg: 'bg-violet-400/18',
-      highlightText: 'text-violet-100',
-      selectedBg: 'bg-gradient-to-br from-violet-500 to-indigo-600',
-      holidayDot: 'bg-violet-300',
-      todayRing: 'ring-2 ring-violet-300 ring-offset-2 ring-offset-slate-900',
-    },
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1400&q=80',
-    colors: {
-      bg: 'bg-indigo-700',
-      overlay: 'bg-indigo-950/75',
-      text: 'text-indigo-300',
-      highlightBg: 'bg-indigo-400/18',
-      highlightText: 'text-indigo-100',
-      selectedBg: 'bg-gradient-to-br from-indigo-500 to-fuchsia-600',
-      holidayDot: 'bg-indigo-300',
-      todayRing: 'ring-2 ring-indigo-300 ring-offset-2 ring-offset-slate-900',
-    },
-  },
+  { name: 'Jan', image: '/months/jan.png', colors: defaultColors, weather: '❄️ -2°C' },
+  { name: 'Feb', image: '/months/feb.png', colors: defaultColors, weather: '🌨️ 1°C' },
+  { name: 'Mar', image: '/months/march.png', colors: defaultColors, weather: '🌦️ 8°C' },
+  { name: 'Apr', image: '/months/april.png', colors: defaultColors, weather: '🌸 15°C' },
+  { name: 'May', image: '/months/may.png', colors: defaultColors, weather: '🌷 19°C' },
+  { name: 'Jun', image: '/months/june.png', colors: defaultColors, weather: '☀️ 24°C' },
+  { name: 'Jul', image: '/months/july.png', colors: defaultColors, weather: '🏖️ 28°C' },
+  { name: 'Aug', image: '/months/august.png', colors: defaultColors, weather: '🥵 30°C' },
+  { name: 'Sep', image: '/months/september.png', colors: defaultColors, weather: '🌤️ 22°C' },
+  { name: 'Oct', image: '/months/october.png', colors: defaultColors, weather: '🍁 14°C' },
+  { name: 'Nov', image: '/months/nov.png', colors: defaultColors, weather: '🍂 8°C' },
+  { name: 'Dec', image: '/months/dec.png', colors: defaultColors, weather: '🎄 0°C' },
 ];

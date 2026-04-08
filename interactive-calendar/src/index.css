@@ -102,9 +102,37 @@ body {
 }
 
 .calendar-page-turn {
-	animation: pageTurn 0.68s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+	animation: pageTurn 0.78s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 	transform-origin: center center;
 	backface-visibility: hidden;
+}
+
+.calendar-page-surface {
+	position: relative;
+	transform-style: preserve-3d;
+	transform-origin: top center;
+	backface-visibility: hidden;
+	box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34);
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	border-bottom: 1px solid rgba(15, 23, 42, 0.45);
+	overflow: hidden;
+}
+
+.calendar-page-surface::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 12%, transparent 76%, rgba(2, 6, 23, 0.22)),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 18%, transparent 82%, rgba(2, 6, 23, 0.16));
+	opacity: 0.65;
+	z-index: 1;
+}
+
+.calendar-page-surface > * {
+	position: relative;
+	z-index: 2;
 }
 
 .spiral-loop {
@@ -150,10 +178,10 @@ body {
 }
 
 @keyframes pageTurn {
-	0% { transform: rotateY(0deg) translateX(0); opacity: 1; filter: blur(0); }
-	38% { transform: rotateY(-16deg) translateX(-10px); opacity: 0.92; filter: blur(0.8px); }
-	62% { transform: rotateY(14deg) translateX(8px); opacity: 0.92; filter: blur(0.8px); }
-	100% { transform: rotateY(0deg) translateX(0); opacity: 1; filter: blur(0); }
+	0% { transform: perspective(1800px) rotateX(0deg) translateY(0); opacity: 1; filter: blur(0); box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34); }
+	28% { transform: perspective(1800px) rotateX(-18deg) translateY(-6px); opacity: 0.96; filter: blur(0.25px); box-shadow: 0 18px 42px rgba(2, 6, 23, 0.3); }
+	58% { transform: perspective(1800px) rotateX(22deg) translateY(10px); opacity: 0.94; filter: blur(0.4px); box-shadow: 0 14px 30px rgba(2, 6, 23, 0.22); }
+	100% { transform: perspective(1800px) rotateX(0deg) translateY(0); opacity: 1; filter: blur(0); box-shadow: 0 24px 60px rgba(2, 6, 23, 0.34); }
 }
 
 @keyframes hangSway {

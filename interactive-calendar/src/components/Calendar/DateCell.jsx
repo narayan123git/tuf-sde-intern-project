@@ -11,6 +11,7 @@ const DateCell = React.memo(function DateCell({
   hasNote,
   onMouseEnter,
   onClick,
+  onOpenDetails,
   onDoubleClick,
   onKeyDown,
 }) {
@@ -40,7 +41,7 @@ const DateCell = React.memo(function DateCell({
     <motion.div
       className="relative group py-1 flex flex-col items-center"
       onMouseEnter={() => onMouseEnter(day.date)}
-      onClick={(event) => onClick(day, event)}
+      onClick={(event) => { onClick(day, event); if (selectionMode === "single" && day.isCurrentMonth && !isAnimating) onOpenDetails(day); }}
       onDoubleClick={(event) => onDoubleClick(day, event)}
       onKeyDown={(event) => onKeyDown(event, day, index)}
       layout
@@ -76,14 +77,11 @@ const DateCell = React.memo(function DateCell({
         {day.dayNumber}
       </motion.button>
 
-      <div className="absolute bottom-0 flex gap-1">
+      <div className="absolute bottom-[-10px] w-full flex justify-center pointer-events-none z-50 gap-1">
         {day.holiday && (
-          <motion.div className="group/holiday relative flex justify-center" whileHover={{ y: -1 }} transition={{ duration: 0.2 }}>
-            <div className={`w-1.5 h-1.5 rounded-full ${currentTheme.colors.holidayDot} shadow-sm transition-colors duration-700`} />
-            <div className="absolute bottom-full mb-1 w-max px-2 py-1 bg-slate-900 text-slate-100 text-[10px] font-medium rounded shadow-xl opacity-0 group-hover/holiday:opacity-100 transition-opacity z-50 pointer-events-none transform -translate-y-1 border border-slate-700">
-              {day.holiday}
-            </div>
-          </motion.div>
+          <span className="text-[7.5px] font-bold text-red-300 bg-red-950/60 border border-red-500/30 px-1 rounded-sm whitespace-nowrap overflow-hidden max-w-[45px] text-ellipsis shadow-md">
+            {day.holiday}
+          </span>
         )}
 
         {hasNote && !displayState.isStart && !displayState.isEnd && (

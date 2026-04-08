@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Header = React.memo(function Header({ currentDate, currentTheme, onPreviousMonth, onNextMonth }) {
+const Header = React.memo(function Header({ currentDate, currentTheme, onPreviousMonth, onNextMonth, onChangeYear, onChangeMonth }) {
   const monthName = currentDate.toLocaleString('default', { month: 'long' });
 
   return (
@@ -21,11 +21,31 @@ const Header = React.memo(function Header({ currentDate, currentTheme, onPreviou
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35, ease: 'easeOut' }}
       >
-        <p className="text-[10px] uppercase tracking-[0.22em] text-slate-200/90 font-semibold mb-2">Ethereal Workspace Calendar</p>
-        <h3 className="text-3xl sm:text-5xl font-black mb-1 tracking-tight leading-none font-headline bg-gradient-to-r from-indigo-100 via-violet-200 to-indigo-300 bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(129,140,248,0.35)]">
-          {monthName}
-        </h3>
-        <h2 className="text-xl sm:text-3xl font-light tracking-[0.12em] text-indigo-200/95">{currentDate.getFullYear()}</h2>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-slate-200/90 font-semibold mb-2">Lumina Workspace Calendar</p>
+        <div className="flex items-baseline gap-3 mb-1">
+          <select
+            value={currentDate.getMonth()}
+            onChange={(e) => onChangeMonth?.(Number(e.target.value))}
+            className="bg-slate-900/60 border border-white/20 rounded-lg px-2 py-1 text-xs font-semibold text-slate-200 hover:border-white/40 focus:outline-none focus:border-blue-400 transition-colors backdrop-blur-sm cursor-pointer"
+            title="Select Month"
+          >
+            {Array.from({ length: 12 }, (_, i) => (
+              <option key={i} value={i} className="text-slate-900">
+                {new Date(2000, i).toLocaleString('default', { month: 'long' })}
+              </option>
+            ))}
+          </select>
+          <select
+            value={currentDate.getFullYear()}
+            onChange={(e) => onChangeYear?.(Number(e.target.value))}
+            className="bg-slate-900/60 border border-white/20 rounded-lg px-2 py-1 text-xs font-semibold text-slate-200 hover:border-white/40 focus:outline-none focus:border-blue-400 transition-colors backdrop-blur-sm cursor-pointer"
+            title="Select Year"
+          >
+            {Array.from({ length: 20 }, (_, i) => currentDate.getFullYear() - 10 + i).map(year => (
+              <option key={year} value={year} className="text-slate-900">{year}</option>
+            ))}
+          </select>
+        </div>
       </motion.div>
     </section>
   );

@@ -5,6 +5,7 @@ import { createCalendarDays } from '../utils/dateHelpers';
 export function useCalendar() {
   const [monthOffset, setMonthOffset] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [monthDirection, setMonthDirection] = useState(1);
   const touchStartRef = useRef(null);
 
   const today = useMemo(() => new Date(), []);
@@ -27,6 +28,7 @@ export function useCalendar() {
   const changeMonth = useCallback((direction) => {
     if (isAnimating) return;
 
+    setMonthDirection(direction);
     setIsAnimating(true);
 
     setTimeout(() => {
@@ -37,6 +39,25 @@ export function useCalendar() {
       setIsAnimating(false);
     }, CALENDAR_LAYOUT.monthTransitionResetMs);
   }, [isAnimating]);
+
+  const goToDate = useCallback((targetYear, targetMonth) => {
+    if (isAnimating) return;
+
+    const currentTodayYear = today.getFullYear();
+    const currentTodayMonth = today.getMonth();
+    const newOffset = (targetYear - currentTodayYear) * 12 + (targetMonth - currentTodayMonth);
+    
+    setMonthDirection(newOffset > monthOffset ? 1 : -1);
+    setIsAnimating(true);
+
+    setTimeout(() => {
+      setMonthOffset(newOffset);
+    }, CALENDAR_LAYOUT.monthTransitionDelayMs);
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, CALENDAR_LAYOUT.monthTransitionResetMs);
+  }, [isAnimating, monthOffset, today]);
 
   const handleTouchStart = useCallback((event) => {
     touchStartRef.current = event.targetTouches[0].clientX;
@@ -65,8 +86,10 @@ export function useCalendar() {
     currentTheme,
     calendarDays,
     monthOffset,
+    monthDirection,
     isAnimating,
     changeMonth,
+    goToDate,
     handleTouchStart,
     handleTouchEnd,
   };
