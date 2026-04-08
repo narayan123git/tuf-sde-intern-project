@@ -245,7 +245,7 @@ const Calendar = () => {
             <div className="z-[100] flex items-center justify-between w-full max-w-5xl mb-6 mt-8">
         <div className="flex bg-slate-900/60 backdrop-blur-md p-1 rounded-full border border-slate-700/60 shadow-xl">
           {['year', 'month'].map(mode => (
-            <button key={mode} onClick={() => setViewMode(mode)} className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 ${viewMode === mode ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'}`}>
+            <button key={mode} onClick={() => setViewMode(mode)} className={`px-8 py-2.5 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${viewMode === mode ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-105' : 'text-slate-400 hover:text-white hover:bg-white/10'}`}>
               {mode}
             </button>
           ))}
